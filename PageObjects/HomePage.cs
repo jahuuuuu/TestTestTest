@@ -1,22 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.PageObjects;
 
 namespace TestTestTest.PageObjects
 {
-
     class HomePage
     {
-        private static IWebDriver driver;
+        String homePageURL = "http://automationpractice.com/index.php";
 
-        IWebElement signInBtn = driver.FindElement(By.ClassName("login"));
+        private IWebDriver driver;
+        private WebDriverWait wait;
+        Int32 timeout = 10000;
 
-        public void clickSignInButton()
+        public HomePage(IWebDriver driver)
+        {
+            this.driver = driver;
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            PageFactory.InitElements(driver, this);
+        }
+
+        [FindsBy(How = How.ClassName, Using = "login")]
+        [CacheLookup]
+        private IWebElement signInBtn;
+
+        public void GoToHomePage()
+        {
+            driver.Navigate().GoToUrl(homePageURL);
+        }
+
+        public void ClickSignInButton()
         {
             signInBtn.Click();
         }
-
     }
 }
