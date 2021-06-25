@@ -32,7 +32,7 @@ namespace CSharpPractice
             homePage.ClickSignInButton();
 
             AuthenticationPage authenticationPage = new AuthenticationPage(driver);
-            authenticationPage.FillIncorrectDataForSignIn();
+            authenticationPage.FillIncorrectDataForSignIn("jakistamemail@gmail.com", "qwerty123");
             authenticationPage.AssertErrorMessage();
         
             string expectedURL = "http://automationpractice.com/index.php";

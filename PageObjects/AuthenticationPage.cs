@@ -32,12 +32,12 @@ namespace TestTestTest.PageObjects
         [CacheLookup]
         private IWebElement errorMSG;
 
-        public void FillIncorrectDataForSignIn()
+        public void FillIncorrectDataForSignIn(string userName, string password)
         {
             authEmail.Click();
-            authEmail.SendKeys("jakistamemail@gmail.com");
+            authEmail.SendKeys(userName);
             authPassword.Click();
-            authPassword.SendKeys("qwerty123");
+            authPassword.SendKeys(password);
             signInBTN.Click();
         }
 
